@@ -7,9 +7,6 @@ Welcome to my personal developer portfolio built with **Django** and **Tailwind 
 - **Backend**: Django, Django REST Framework
 - **Frontend**: Tailwind CSS, HTML, JavaScript
 - **Database**: PostgreSQL
-- **Authentication**: JWT / Token-Based
-- **Deployment**: Gunicorn, Nginx, AWS EC2 / Render
-- **Tools**: Git, GitHub, GitHub Actions
 
 ## 📁 Features
 
