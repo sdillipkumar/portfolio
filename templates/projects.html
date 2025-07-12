@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Featured Projects | Dillip Kumar Singh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes spin-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+      animation: spin-slow 14s linear infinite;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white font-sans leading-relaxed">
+
+  <section class="max-w-5xl mx-auto px-4 py-16">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-500">
+      🚀 Featured Projects
+    </h1>
+
+    <!-- VMS Project -->
+    <div class="glass p-8 rounded-3xl mb-12 relative overflow-hidden shadow-lg transition hover:scale-[1.01]">
+      <div class="absolute -top-20 -right-20 w-72 h-72 bg-pink-500 opacity-10 blur-3xl rounded-full animate-spin-slow"></div>
+
+      <a href="http://13.53.206.142/" target="_blank">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 text-pink-300 hover:underline">
+          Vendor Management System with Performance Metrics (VMS)
+        </h2>
+      </a>
+      <p class="text-sm text-gray-400 mb-2"><strong>Role:</strong> Full Stack Django Developer</p>
+      <p class="text-sm text-gray-400 mb-4"><strong>Tech Stack:</strong> Django, Django REST Framework, Tailwind CSS, PostgreSQL, JWT Auth, Pytest</p>
+
+      <p class="text-gray-300 mb-6">
+        Built a full-featured VMS platform for managing vendor onboarding, purchase orders, and KPI-based performance analytics, with role-based access (Admin/Vendor).
+      </p>
+
+      <h3 class="text-lg text-purple-400 font-semibold mb-2">Key Contributions:</h3>
+      <ul class="list-disc ml-6 text-gray-400 space-y-2 mb-4">
+        <li>Created scalable models for Vendor, Purchase Order, and Performance Metrics with business logic integration.</li>
+        <li>Developed secure APIs with JWT authentication and role-specific views for procurement workflows.</li>
+        <li>Designed animated, responsive dashboards using Tailwind CSS and Django templates.</li>
+        <li>Wrote Pytest-based unit tests for authentication, permissions, and API endpoints (90%+ coverage).</li>
+      </ul>
+    <div class="flex items-center gap-6">
+  <!-- GitHub Repo Link -->
+  <a href="https://github.com/sdillipkumar/Vendor_Management" target="_blank"
+     class="text-blue-400 hover:underline">🔗 GitHub Repo</a>
+
+  <!-- Live Site Link (Next to it) -->
+  <a href="http://13.53.206.142/" target="_blank"
+     class="text-green-400 hover:underline">🌐 Live Site</a>
+</div>
+
+
+<!-- EMS Project -->
+   
+  <!-- FIX: Make this background glow non-interactive -->
+  <div class="absolute -bottom-20 -left-20 w-72 h-72 bg-purple-500 opacity-10 blur-3xl rounded-full animate-pulse pointer-events-none"></div>
+
+  <a href="https://github.com/sdillipkumar/Django_Office-Employees-Management-System" target="_blank">
+    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-purple-300 hover:underline">
+      Office Employee Management System
+    </h2>
+  </a>
+
+  <p class="text-sm text-gray-400 mb-2"><strong>Role:</strong> Full Stack Django Developer</p>
+  <p class="text-sm text-gray-400 mb-4"><strong>Tech Stack:</strong> Django, Django REST Framework, Tailwind CSS, PostgreSQL, Token Authentication</p>
+
+  <p class="text-gray-300 mb-6">
+    Designed and implemented an internal system to handle employee onboarding, leave tracking, and role management.
+  </p>
+
+  <h3 class="text-lg text-purple-400 font-semibold mb-2">Key Contributions:</h3>
+  <ul class="list-disc ml-6 text-gray-400 space-y-2 mb-4">
+    <li>Built relational models and APIs for Employee, Department, Leave, and Role workflows.</li>
+    <li>Integrated secure token-based access for role-specific dashboard views.</li>
+    <li>Developed a responsive admin dashboard with Django + Tailwind CSS.</li>
+    <li>Optimized ORM queries for high performance across HR modules.</li>
+  </ul>
+
+<div class="flex items-center gap-6">
+  <!-- GitHub Repo Link -->
+  <a href="https://github.com/sdillipkumar/Django_Office-Employees-Management-System" target="_blank"
+     class="text-blue-400 hover:underline">🔗 GitHub Repo</a>
+
+  <!-- Live Site Link (Next to it) -->
+  <a href="https://your-deployed-site-url.com" target="_blank"
+     class="text-green-400 hover:underline">🌐 Live Site</a>
+</div>
+
+
+    <!-- Key Achievements -->
+    <div class="mt-16">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-indigo-300">🏆 Key Achievements</h2>
+      <ul class="list-disc ml-6 text-gray-400 space-y-2">
+        <li>Delivered two full-stack Django applications with secure authentication, role-based access, and dynamic dashboards.</li>
+        <li>Applied secure coding practices, thorough data validation, and strong ORM design patterns.</li>
+        <li>Achieved over 90% test coverage using Pytest across all modules and authentication flows.</li>
+        <li>Followed Agile principles and best practices while building scalable, production-ready backend systems.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="mt-12 text-center">
+  <a href="/" class="inline-block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white px-6 py-2 rounded-full shadow-lg hover:scale-105 transition transform duration-300">
+    ⬅️ Back to Home
+  </a>
+</div>
+  </section>
+</body>
+</html>

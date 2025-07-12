@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me - Dillip Kumar Singh</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    };
+  </script>
+</head>
+<body class="bg-gray-900 text-white font-sans leading-relaxed">
+
+  <!-- SECTION: Intro & Summary -->
+  <section class="min-h-screen p-8 md:p-16">
+    <div class="max-w-6xl mx-auto bg-gradient-to-br from-gray-800 to-gray-900 border border-blue-400/20 shadow-xl rounded-2xl p-8 space-y-10">
+
+      <!-- Header -->
+      <div>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-pink-400 mb-4">👋 Dillip Kumar Singh</h1>
+        <p class="text-lg sm:text-3xl text-300 mb-2">Full-Stack Python/Django Developer</p>
+        <p class="text-xl text-gray-400">
+          📞 +91 7008946393 | ✉️ sdillipkumar21@gmail.com <br>
+          📍 Balasore, Odisha &nbsp;&nbsp; | &nbsp;&nbsp;
+          🔗 <a href="https://www.linkedin.com/in/dillip-kumar-singh-7444b817a/" class="text-blue-400 underline">LinkedIn</a> |
+          <a href="https://github.com/sdillipkumar" class="text-blue-400 underline">GitHub</a>
+        </p>
+      </div>
+
+      <!-- Summary -->
+      <div>
+        <h2 class="text-2xl font-semibold text-pink-300 mb-3">🧾 Professional Summary</h2>
+        <p class="text-gray-300 text-md leading-relaxed">
+          Full-Stack Python/Django Developer with 3 years of hands-on experience building scalable web applications, 
+          secure RESTful APIs, and responsive front-end interfaces. Proficient in Django, Django REST Framework, 
+          PostgreSQL, and Tailwind CSS. Known for clean coding practices, performance optimization, and delivering user-
+          centric solutions. Strong collaborator with a problem-solving mindset and a focus on building maintainable, 
+          production-ready systems. 
+        </p>
+      </div>
+      
+    <!-- Skills -->
+    <div>
+      <h3 class="text-2xl font-semibold text-white mb-6">🛠️ Technical Skills</h3>
+      <div class="flex flex-wrap gap-3 text-sm">
+        <span class="px-4 py-1 rounded-full bg-green-500/20 text-green-300">Python</span>
+        <span class="px-4 py-1 rounded-full bg-blue-500/20 text-blue-300">Django</span>
+        <span class="px-4 py-1 rounded-full bg-cyan-500/20 text-cyan-300">Django REST Framework</span>
+        <span class="px-4 py-1 rounded-full bg-lime-500/20 text-lime-300">JWT Auth</span>
+        <span class="px-4 py-1 rounded-full bg-red-500/20 text-red-300">PostgreSQL</span>
+        <span class="px-4 py-1 rounded-full bg-red-400/20 text-red-200">SQLite</span>
+        <span class="px-4 py-1 rounded-full bg-purple-500/20 text-purple-300">Tailwind CSS</span>
+        <span class="px-4 py-1 rounded-full bg-yellow-500/20 text-yellow-300">HTML5</span>
+        <span class="px-4 py-1 rounded-full bg-yellow-400/20 text-yellow-200">CSS3</span>
+        <span class="px-4 py-1 rounded-full bg-yellow-300/20 text-yellow-100">JavaScript</span>
+        <span class="px-4 py-1 rounded-full bg-indigo-500/20 text-indigo-300">Chart.js</span>
+        <span class="px-4 py-1 rounded-full bg-pink-400/20 text-pink-200">Alpine.js (Basic)</span>
+        <span class="px-4 py-1 rounded-full bg-pink-500/20 text-pink-300">Render</span>
+        <span class="px-4 py-1 rounded-full bg-pink-500/20 text-pink-300">Heroku</span>
+        <span class="px-4 py-1 rounded-full bg-gray-400/20 text-gray-300">Gunicorn</span>
+        <span class="px-4 py-1 rounded-full bg-gray-700/20 text-gray-200">Nginx</span>
+        <span class="px-4 py-1 rounded-full bg-orange-500/20 text-orange-300">Pytest</span>
+        <span class="px-4 py-1 rounded-full bg-blue-700/20 text-blue-200">Postman</span>
+        <span class="px-4 py-1 rounded-full bg-gray-500/20 text-gray-300">Git</span>
+        <span class="px-4 py-1 rounded-full bg-black/20 text-white">GitHub</span>
+        <span class="px-4 py-1 rounded-full bg-green-400/20 text-green-100">RBAC</span>
+        <span class="px-4 py-1 rounded-full bg-indigo-300/20 text-indigo-100">Responsive UI</span>
+        <span class="px-4 py-1 rounded-full bg-teal-400/20 text-teal-100">Template Inheritance</span>
+        <span class="px-4 py-1 rounded-full bg-blue-400/20 text-blue-100">AJAX</span>
+        <span class="px-4 py-1 rounded-full bg-red-500/20 text-red-300">Debug Toolbar</span>
+      </div>
+    </div>
+
+    <!-- Work Experience -->
+    <div>
+      <h2 class="text-2xl font-semibold text-pink-300 mb-4">💼 Work Experience</h2>
+      <div class="space-y-6">
+        <div>
+          <h4 class="text-lg font-bold text-white">Python Developer | Ramtech Software Solutions, Hyderabad</h4>
+          <p class="text-sm text-gray-400 mb-2">Apr 2023 – Present</p>
+          <ul class="list-disc ml-6 text-gray-300 space-y-1 text-sm">
+            <li>Developed scalable web apps using Django, REST Api, PostgreSQL, HTML, and Tailwind CSS.</li>
+            <li>Designed relational models and optimized Django ORM queries.</li>
+            <li>Developed Vendor Management System (VMS) with performance tracking dashboards.</li>
+            <li>Implemented JWT-based authentication and vendor/admin role separation.</li>
+            <li>Integrated automated testing with Pytest for authentication, permissions, and APIs.</li>
+            <li>Used GitHub for version control and agile collaboration.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold text-white">GIS Engineer | Ramtech Software Solutions, Hyderabad</h4>
+          <p class="text-sm text-gray-400 mb-2">2019 – 2023</p>
+          <ul class="list-disc ml-6 text-gray-300 space-y-1 text-sm">
+            <li>Mapped utility layouts using AutoCAD & ArcGIS Pro across US states.</li>
+            <li>Managed geospatial data for telecom/gas/electric projects.</li>
+            <li>Ensured mapping standards compliance across teams.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div>
+      <h2 class="text-2xl font-semibold text-pink-300 mb-4">🎓 Education</h2>
+      <ul class="text-gray-300 space-y-2">
+        <li><strong>B.Tech in Electrical Engineering</strong> - Ajay Binay Institute of Technology, Cuttack (2013–2017)</li>
+        <li><strong>Master Certificate (Automation & Process Control)</strong> - CTTC Bhubaneswar (2017–2018)</li>
+        <li><strong>Intermediate</strong> - Fakir Mohan Junior College, Balasore (2011–2013)</li>
+        <li><strong>Matriculation</strong> - Kalinga Vidyapitha, Cuttack (2010–2011)</li>
+      </ul>
+    </div>
+    </div>
+    <div class="mt-12 text-center">
+  <a href="/" class="inline-block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white px-6 py-2 rounded-full shadow-lg hover:scale-105 transition transform duration-300">
+    ⬅️ Back to Home
+  </a>
+</div>
+
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,481 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'gradient-x':'gradient-x 8s ease infinite',
+                        'gradient-y':'gradient-y 8s ease infinite',
+                        'gradient-xy':'gradient-xy 8s ease infinite',
+                        'spin-slow': 'spin 6s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'gradient-y': {
+                            '0%, 100%': {
+                                'background-size':'400% 400%',
+                                'background-position': 'center top'
+                            },
+                            '50%': {
+                                'background-size':'200% 200%',
+                                'background-position': 'center center'
+                            }
+                        },
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size':'400% 400%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size':'200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        'gradient-xy': {
+                            '0%, 100%': {
+                                'background-size':'400% 400%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size':'200% 200%',
+                                'background-position': 'right center'
+                            }
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+            
+        }
+    </script>
+    <script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .sidebar-item:hover .sidebar-icon {
+            transform: scale(1.2);
+        }
+        
+        .photo-container:hover img {
+            filter: grayscale(0);
+            transform: scale(1.05);
+        }
+        
+        .photo-container:hover .photo-overlay {
+            opacity: 0;
+        }
+        
+        .text-gradient {
+            background-image: linear-gradient(90deg, #ff4d4d, #f9cb28, #00c853, #0091ea, #aa00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradient-x 15s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        .cursor-trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-900 text-white grid-bg">
+    <!-- Cursor trail element -->
+    <div class="cursor-trail" id="cursorTrail"></div>
+    
+    <div class="container mx-auto px-4 py-8 flex flex-col lg:flex-row">
+        <!-- Colorful Animated Sidebar -->
+        <div class="lg:w-1/5 mb-8 lg:mb-0 lg:mr-8 transition-all duration-300">
+            <div class="glass-effect p-6 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
+                <!-- Animated gradient background -->
+                <div class="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 opacity-10 animate-[gradient-x_8s_ease_infinite]"></div>
+                
+                <!-- Photo Container -->
+                <div class="photo-container relative w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white border-opacity-20 transition-all duration-500">
+                    <!-- Replace with your actual photo -->
+                    <img src="{% static 'images/my_pic.jpeg' %} " 
+                         alt="Dillip" 
+                         class="w-full h-full object-cover filter grayscale-50 transition-all duration-500">
+                    <div class="photo-overlay absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-500 opacity-30 mix-blend-overlay transition-all duration-500"></div>
+                </div>
+                
+                <!-- Name and Title -->
+                <h1 class="text-2xl font-bold text-center mb-1 animate-pulse">DILLIP KUMAR SINGH</h1>
+                <p class="text-center text-sm opacity-80 mb-6">PYTHON DEVELOPER</p>
+
+                <!-- Interactive Social Links -->
+                <div class="flex justify-center space-x-4 mb-8">
+                <!-- GitHub Icon -->
+                <a href="https://github.com/sdillipkumar" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full bg-white bg-opacity-10 hover:bg-opacity-20 transition-all duration-300 transform hover:scale-110">
+                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.26.82-.577v-2.17c-3.338.724-4.033-1.61-4.033-1.61-.546-1.385-1.333-1.754-1.333-1.754-1.09-.745.083-.73.083-.73 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.776.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.932 0-1.31.468-2.382 1.235-3.222-.123-.303-.535-1.522.117-3.176 0 0 1.008-.322 3.3 1.23a11.52 11.52 0 0 1 3.003-.404c1.02.005 2.045.138 3.003.404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.654.241 2.873.118 3.176.77.84 1.233 1.912 1.233 3.222 0 4.61-2.804 5.628-5.475 5.922.43.372.823 1.102.823 2.222v3.293c0 .319.218.694.825.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z" clip-rule="evenodd"/>
+                    </svg>
+                </a>
+
+                <!-- LinkedIn Icon -->
+                <a href="https://www.linkedin.com/in/dillip-kumar-singh-7444b817a/" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-full bg-white bg-opacity-10 hover:bg-opacity-20 transition-all duration-300 transform hover:scale-110">
+                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.269c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.783 1.75-1.75 1.75zm13.5 11.269h-3v-5.604c0-1.337-.026-3.061-1.865-3.061-1.867 0-2.153 1.459-2.153 2.969v5.696h-3v-10h2.881v1.367h.041c.401-.757 1.381-1.555 2.841-1.555 3.041 0 3.603 2.003 3.603 4.609v5.579z"/>
+                    </svg>
+                </a>
+            </div>
+
+
+              
+                
+                <!-- Navigation Menu -->
+                <nav class="space-y-3">
+                    <a href="{% url 'home' %}" class="sidebar-item flex items-center px-4 py-3 rounded-lg bg-white bg-opacity-5 hover:bg-opacity-20 transition-all duration-300 group relative overflow-hidden">
+                        <span class="sidebar-icon mr-3 transition-all duration-300 group-hover:text-purple-300"></span>
+                        <span class="font-medium">Home</span>
+                        <span class="absolute right-4 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                    </a>
+                    <a href="{% url 'about_me' %}" class="sidebar-item flex items-center px-4 py-3 rounded-lg bg-white bg-opacity-5 hover:bg-opacity-20 transition-all duration-300 group relative overflow-hidden">
+                        <span class="sidebar-icon mr-3 transition-all duration-300 group-hover:text-blue-300"></span>
+                        <span class="font-medium">About</span>
+                        <span class="absolute right-4 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                    </a>
+
+                    <a href="{% url 'projects' %}" class="sidebar-item flex items-center px-4 py-3 rounded-lg bg-white bg-opacity-5 hover:bg-opacity-20 transition-all duration-300 group relative overflow-hidden">
+                        <span class="sidebar-icon mr-3 transition-all duration-300 group-hover:text-green-300"></span>
+                        <span class="font-medium">Works</span>
+                        <span class="absolute right-4 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                    </a>
+                  
+                    <a href="{% url 'contact:form' %}" class="sidebar-item flex items-center px-4 py-3 rounded-lg bg-white bg-opacity-5 hover:bg-opacity-20 transition-all duration-300 group relative overflow-hidden">
+                        <span class="sidebar-icon mr-3 transition-all duration-300 group-hover:text-red-300"></span>
+                        <span class="font-medium">Contact</span>
+                        <span class="absolute right-4 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                    </a>
+                </nav>
+            </div>
+            
+            <!-- Floating decorative elements -->
+            <div class="absolute -bottom-10 -left-10 w-48 h-48 rounded-full bg-purple-500 opacity-10 blur-lg animate-float"></div>
+            <div class="absolute -top-20 -right-10 w-32 h-32 rounded-full bg-blue-500 opacity-10 blur-lg animate-[float_4s_ease-in-out_infinite]"></div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex-1">
+            <!-- Animated Header -->
+            <header class="glass-effect p-8 rounded-2xl mb-8 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-800 to-green-900 opacity-20 animate-[gradient-xy_15s_ease_infinite]"></div>
+                    <p class="text-lg text-gray-700 dark:text-gray-300">
+                    <span class="text-gradient font-bold text-3xl">I'm a passionate</span>
+                
+                    <span class="text-gradient font-bold text-5xl">Python Developer</span>
+                    </p>
+                </h1>
+                <p class="text-lg opacity-90 mb-6 max-w-2xl">
+                   I design scalable backends, build robust APIs, and automate workflows using Python & Django. 
+                   Let's turn your ideas into production-ready web apps.
+                </p>
+
+               
+                <!-- Floating particles -->
+                <div class="absolute top-1/4 left-1/4 w-3 h-3 rounded-full bg-purple-400 opacity-70 animate-float"></div>
+                <div class="absolute top-1/3 right-1/3 w-4 h-4 rounded-full bg-blue-400 opacity-70 animate-[float_5s_ease-in-out_infinite]"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-2 h-2 rounded-full bg-green-400 opacity-70 animate-[float_7s_ease-in-out_infinite]"></div>
+            </header>
+            
+<!-- About Section -->
+<a href="/about" class="block group transition-transform transform hover:scale-[1.01]">
+<section class="glass-effect p-8 rounded-2xl mb-8 relative overflow-hidden">
+    <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-pink-500 opacity-10 blur-xl animate-spin-slow"></div>
+    <h2 class="text-3xl font-bold mb-6 flex items-center">
+        <span class="mr-3">👋</span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">About Me</span>
+    </h2>
+    <p class="mb-6 opacity-90 leading-relaxed">
+        I'm a Python/Django developer with 3 years of hands-on experience building robust backend systems and full-stack web applications. I specialize in designing scalable REST APIs, managing PostgreSQL databases, and crafting responsive user interfaces with Tailwind CSS. I take pride in writing clean, maintainable code and delivering high-performance solutions for real-world problems.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div>
+            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                <span class="w-2 h-2 rounded-full bg-blue-400 mr-2 animate-pulse"></span>
+                Skills
+            </h3>
+            <ul class="space-y-2 opacity-90">
+                <li class="flex items-center">
+                    <span class="w-8 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mr-2"></span>
+                    Backend Development (Django, DRF)
+                </li>
+                <li class="flex items-center">
+                    <span class="w-8 h-1 bg-gradient-to-r from-green-400 to-teal-400 mr-2"></span>
+                    RESTful API Design
+                </li>
+                <li class="flex items-center">
+                    <span class="w-8 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 mr-2"></span>
+                    Database Management (PostgreSQL)
+                </li>
+                <li class="flex items-center">
+                    <span class="w-8 h-1 bg-gradient-to-r from-pink-400 to-red-400 mr-2"></span>
+                    Frontend Integration (Tailwind CSS)
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-xl font-semibold mb-3 flex items-center">
+                <span class="w-2 h-2 rounded-full bg-purple-400 mr-2 animate-pulse"></span>
+                Technologies
+            </h3>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full text-xs bg-gradient-to-r from-green-500 to-emerald-700">Python</span>
+                <span class="px-3 py-1 rounded-full text-xs bg-gradient-to-r from-blue-600 to-indigo-700">Django</span>
+                <span class="px-3 py-1 rounded-full text-xs bg-gradient-to-r from-teal-500 to-cyan-600">Django REST Framework</span>
+                <span class="px-3 py-1 rounded-full text-xs bg-gradient-to-r from-pink-500 to-red-600">PostgreSQL</span>
+                <span class="px-3 py-1 rounded-full text-xs bg-gradient-to-r from-purple-500 to-indigo-700">Tailwind CSS</span>
+                <span class="px-3 py-1 rounded-full text-xs bg-gradient-to-r from-yellow-400 to-yellow-600">JavaScript</span>
+                <span class="px-3 py-1 rounded-full text-xs bg-gradient-to-r from-gray-500 to-gray-700">Git</span>
+                <span class="px-3 py-1 rounded-full text-xs bg-gradient-to-r from-orange-400 to-orange-600">Render / Heroku</span>
+            </div>
+        </div>
+    </div>
+</section>
+</a>
+  <!-- Projects Section -->
+<section class="glass-effect p-8 rounded-2xl mb-8">
+    <h2 class="text-3xl font-bold mb-8 flex items-center">
+        <span class="mr-3">🚀</span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-400">Featured Projects</span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Project 1: Vendor Management System -->
+        <div class="project-card group bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-6 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+                <h3 class="text-xl font-semibold mb-2">Vendor Management System with Performance Metrics (VMS)</h3>
+                <p class="text-sm opacity-80 mb-3">
+                    Built a full-featured VMS platform for managing vendor onboarding, purchase orders, and KPI-based performance analytics with role-based access.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 rounded-full text-xs bg-blue-500/20">Django</span>
+                    <span class="px-2 py-1 rounded-full text-xs bg-green-500/20">DRF</span>
+                    <span class="px-2 py-1 rounded-full text-xs bg-indigo-500/20">Tailwind CSS</span>
+                    <span class="px-2 py-1 rounded-full text-xs bg-yellow-500/20">PostgreSQL</span>
+                    <span class="px-2 py-1 rounded-full text-xs bg-pink-500/20">JWT Auth</span>
+                    <span class="px-2 py-1 rounded-full text-xs bg-purple-500/20">Pytest</span>
+                </div>
+                <a href="{% url 'projects'%}" target="_blank" class="text-sm font-medium text-blue-400 group-hover:text-blue-300 transition-colors duration-300">
+                    View Project → 
+                </a>
+            </div>
+        </div>
+
+        <!-- Project 2: Office Employee Management System -->
+        <div class="project-card group bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-6 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div class="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+                <h3 class="text-xl font-semibold mb-2">Office Employee Management System</h3>
+                <p class="text-sm opacity-80 mb-3">
+                    Designed and implemented an internal system to handle employee onboarding, leave tracking, and role management.
+                </p>
+                   <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-2 py-1 rounded-full text-xs bg-blue-500/20">Django</span>
+                    <span class="px-2 py-1 rounded-full text-xs bg-teal-500/20">DRF</span>
+                    <span class="px-2 py-1 rounded-full text-xs bg-purple-500/20">Tailwind CSS</span>
+                    <span class="px-2 py-1 rounded-full text-xs bg-orange-500/20">PostgreSQL</span>
+                    <span class="px-2 py-1 rounded-full text-xs bg-pink-500/20">Token Auth</span>
+                </div>
+                <a href="{% url 'projects'%}" target="_blank" class="text-sm font-medium text-pink-400 group-hover:text-pink-300 transition-colors duration-300">
+                    View Project →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    
+    <!-- Floating decorative elements -->
+    <div class="fixed bottom-10 left-10 w-32 h-32 rounded-full bg-blue-500 opacity-5 blur-xl animate-[spin-slow_20s_linear_infinite]"></div>
+    <div class="fixed top-20 right-20 w-24 h-24 rounded-full bg-purple-500 opacity-5 blur-xl animate-[spin-slow_15s_linear_infinite_reverse]"></div>
+    <div class="fixed top-1/2 left-1/4 w-16 h-16 rounded-full bg-pink-500 opacity-10 blur-lg animate-float"></div>
+   
+ <script>
+    // Cursor trail effect
+    const cursorTrail = document.getElementById('cursorTrail');
+    
+    document.addEventListener('mousemove', (e) => {
+        cursorTrail.style.left = `${e.clientX}px`;
+        cursorTrail.style.top = `${e.clientY}px`;
+        cursorTrail.style.opacity = '1';
+
+        // 🎯 NEW fading mark effect
+        const mark = document.createElement('div');
+        mark.className = 'cursor-mark pointer-events-none fixed rounded-full bg-blue-400 opacity-70';
+        mark.style.width = '12px';
+        mark.style.height = '12px';
+        mark.style.left = `${e.clientX}px`;
+        mark.style.top = `${e.clientY}px`;
+        mark.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        mark.style.transform = 'translate(-50%, -50%) scale(1)';
+        mark.style.position = 'fixed';
+        mark.style.zIndex = '9999';
+
+        document.body.appendChild(mark);
+
+        setTimeout(() => {
+            mark.style.opacity = '0';
+            mark.style.transform = 'translate(-50%, -50%) scale(2)';
+        }, 10);
+
+        setTimeout(() => {
+            mark.remove();
+        }, 700);
+    });
+
+    document.addEventListener('mouseout', () => {
+        cursorTrail.style.opacity = '0';
+    });
+
+    // Button ripple effect
+    const ctaButton = document.getElementById('ctaButton');
+
+    ctaButton.addEventListener('click', (e) => {
+        const rect = e.target.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+
+        ctaButton.appendChild(ripple);
+
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
+    });
+
+    // Dynamic particles effect on header hover
+    const header = document.querySelector('header');
+    header.addEventListener('mousemove', (e) => {
+        const particles = document.createElement('div');
+        particles.classList.add('absolute', 'rounded-full', 'bg-white', 'opacity-20', 'animate-float');
+        particles.style.width = `${Math.random() * 6 + 2}px`;
+        particles.style.height = particles.style.width;
+        particles.style.left = `${e.clientX - header.getBoundingClientRect().left}px`;
+        particles.style.top = `${e.clientY - header.getBoundingClientRect().top}px`;
+
+        header.appendChild(particles);
+
+        setTimeout(() => {
+            particles.remove();
+        }, 2000);
+    });
+
+    // Dynamic color shifts on sidebar hover
+    const sidebarItems = document.querySelectorAll('.sidebar-item');
+
+    sidebarItems.forEach((item, index) => {
+        item.addEventListener('mouseenter', () => {
+            const colors = [
+                'rgba(168, 85, 247, 0.1)',
+                'rgba(59, 130, 246, 0.1)',
+                'rgba(16, 185, 129, 0.1)',
+                'rgba(234, 179, 8, 0.1)',
+                'rgba(239, 68, 68, 0.1)'
+            ];
+            item.style.backgroundColor = colors[index % colors.length];
+        });
+
+        item.addEventListener('mouseleave', () => {
+            item.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+        });
+    });
+
+    // Dynamic background animation on scroll
+    window.addEventListener('scroll', () => {
+        const scrollPercentage = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        document.body.style.backgroundPosition = `0% ${scrollPercentage * 100}%`;
+    });
+</script>
+            <!-- Contact Section -->
+            <div class="glass-effect p-8 rounded-2xl mb-8">
+                <h2 class="text-3xl font-bold mb-6 flex items-center">
+                    <span class="mr-3">✉️</span>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-teal-400">Get in Touch</span>
+                </h2>
+                <p class="mb-4 opacity-90">Have a project in mind or just want to say hi? Feel free to reach out!</p>
+                <a href="{% url 'contact:form' %}" class="inline-block px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-300">
+                    Contact Me
+                </a>
+            </div>
+        </div>
+    </div>
+   <!-- Footer -->
+<footer class="mt-16 text-center px-4 py-6 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 shadow-inner rounded-t-2xl animate-fade-in">
+  <div class="text-sm text-gray-400 space-y-2">
+    <p class="tracking-wide">&copy; <span id="year">2023</span> <span class="text-pink-400 font-semibold">Dillip Kumar Singh</span>. All rights reserved.</p>
+    <p class="flex justify-center items-center gap-2">
+      <span class="text-gray-300">Built with</span>
+      <span class="animate-pulse text-red-500">❤️</span>
+      <span class="text-gray-300">using</span>
+      <span class="text-blue-400 font-medium">Django</span>,
+      <span class="text-teal-400 font-medium">Tailwind CSS</span>, and
+      <span class="text-yellow-400 font-medium">Python</span>.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
