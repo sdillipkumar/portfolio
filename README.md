@@ -19,3 +19,6 @@ Welcome to my personal developer portfolio built with **Django** and **Tailwind 
 - 🧪 Testable with Pytest
 
 ## 🖥️ Screenshots
+<img width="1366" height="768" alt="--portfolio" src="https://github.com/user-attachments/assets/127f419a-7db8-4b33-bdf9-9a3dbd0cc2df" />
+
+<img width="1366" height="768" alt="Screenshot (20)" src="https://github.com/user-attachments/assets/a085dade-d729-4374-bda3-da444f634bd4" />
