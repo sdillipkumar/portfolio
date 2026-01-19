@@ -1,4 +1,4 @@
-## 🧑‍💻 Dillip Kumar Singh - Developer Portfolio
+### 🧑‍💻 Dillip Kumar Singh - Developer Portfolio
 
 Welcome to my personal developer portfolio built with **Django** and **Tailwind CSS**. This site showcases my technical skills, featured projects, and contact information.
 
